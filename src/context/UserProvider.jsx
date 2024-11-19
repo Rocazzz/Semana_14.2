@@ -7,7 +7,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { auth } from "../firebase/Firebase";
+import { auth } from "../firebase/firebase";
 
 export const UserContext = createContext();
 
@@ -32,7 +32,7 @@ const UserProvider = (props) => {
   //Mantener el usuario presente en el sitio
 
   useEffect(() => {
-    const unsuscribe = onAuthStateChanged(auth, () => {
+    const unsuscribe = onAuthStateChanged(auth, (user) => {
       console.log(user);
       if (user) {
         const { email, photoURL, displayName, uid } = user;
@@ -46,7 +46,9 @@ const UserProvider = (props) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, setUser, registerUser, loginUser }}>
+    <UserContext.Provider
+      value={{ user, setUser, registerUser, loginUser, signOutUser }}
+    >
       {props.children}
     </UserContext.Provider>
   );

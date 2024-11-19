@@ -5,7 +5,7 @@ import Login from "./routes/Login";
 import { UserContext } from "./context/UserProvider";
 import Nabvar from "./componentes/Nabvar";
 import RequireAuth from "./componentes/RequireAuth";
-import Register from "./componentes/Register";
+import Register from "./routes/Register";
 import "./App.css";
 
 function App() {
